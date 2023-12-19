@@ -3,84 +3,87 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue'
+  import { defineComponent, type PropType } from "vue";
 
-type bgColorName = 'positive' | 'negative' | 'info' | 'warning' | 'success'
+  type bgColorName = "positive" | "negative" | "info" | "warning" | "success";
 
-export default defineComponent({
-  emits: ['btn-clicked'],
-  props: {
-    color: {
-      type: String as PropType<bgColorName>,
-      default: 'info'
-    }
-    // textColor: {
+  export default defineComponent({
+    emits: ["btn-clicked"],
+    props: {
+      color: {
+        type: String as PropType<bgColorName>,
+        default: "info",
+      },
+      // textColor: {
 
-    // },
-    // size: {},
-    // square: {},
-    // outline: {},
-    // disable: {}
-  },
-  components: {},
-  data() {
-    return {}
-  },
-  computed: {
-    btnClasses(): Array<string> {
-      const btnClasses: Array<string> = []
-      btnClasses.push(this.color)
-      return btnClasses
-    }
-  }
-})
+      // },
+      // size: {},
+      // square: {},
+      // outline: {},
+      // disable: {}
+    },
+    components: {},
+    data() {
+      return {};
+    },
+    created() {
+      console.log("runai-btn created");
+    },
+    computed: {
+      btnClasses(): Array<string> {
+        const btnClasses: Array<string> = [];
+        btnClasses.push(this.color);
+        return btnClasses;
+      },
+    },
+  });
 </script>
 <style lang="scss" scoped>
-@import '../../assets/scss/_colors.scss';
+  @import "../../assets/scss/_colors.scss";
 
-.runai-btn {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: stretch;
-  position: relative;
-  outline: 0;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
-  color: $white;
-  transition: background-color .3s cubic-bezier(.25,.8,.5,1),opacity .4s cubic-bezier(.25,.8,.5,1);
-  font-weight: 500;
-  text-transform: uppercase;
-  text-align: center;
-  width: auto;
-  height: auto;
-  cursor: pointer;
-  padding: 4px 16px;
-  border-radius: 3px;
+  .runai-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    outline: 0;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    color: $white;
+    transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    padding: 4px 16px;
+    border-radius: 3px;
 
-  &:hover {
-    background: currentColor;
-    opacity: 0.75;
+    &:hover {
+      background: currentColor;
+      opacity: 0.75;
+    }
+
+    &.positive {
+      background-color: $positive;
+    }
+
+    &.negative {
+      background-color: $negative;
+    }
+
+    &.info {
+      background-color: $info;
+    }
+
+    &.warning {
+      background-color: $warning;
+    }
+
+    &.success {
+      background-color: $success;
+    }
   }
-
-  &.positive {
-    background-color: $positive;
-  }
-
-  &.negative {
-    background-color: $negative;
-  }
-
-  &.info {
-    background-color: $info;
-  }
-
-  &.warning {
-    background-color: $warning;
-  }
-
-  &.success {
-    background-color: $success;
-  }
-}
 </style>
